@@ -24,16 +24,18 @@ func main() {
 	fmt.Printf("Type of isNum %T value of isNum %v\n", isNum, isNum)
 	fmt.Printf("Type of numStr %T value of numStr %v\n", numStr, numStr)
 
-	var a, b, c = 10, 20, 30
-	/*var t = b
-	b = a
-	a = t*/
-	// simple swapping in go
+	{
+		var a, b, c = 10, 20, 30
+		/*var t = b
+		b = a
+		a = t*/
+		// simple swapping in go
 
-	fmt.Println("Before swap a,b,c", a, b, c)
-	a, b, c = c, a, b
+		fmt.Println("Before swap a,b,c", a, b, c)
+		a, b, c = c, a, b
 
-	fmt.Println("After swap a,b,c", a, b, c)
+		fmt.Println("After swap a,b,c", a, b, c)
+	}
 
 	// Type Casting
 	var long int64
@@ -52,5 +54,11 @@ func main() {
 	var small1 int32 // type is int32
 	small1 = int32(long1)
 	fmt.Println("Long1 and small1", long1, small1)
+
+	long1 = 2000
+
+	num = 127
+
+	fmt.Println("Mutation of long1 and num", long1, num)
 
 }
