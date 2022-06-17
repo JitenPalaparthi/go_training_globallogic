@@ -72,4 +72,26 @@ func main() {
 
 	fmt.Println("Complex number ", cmplx6, "type of complex number", reflect.TypeOf(cmplx6))
 
+	// constants
+
+	const MIN int = 9
+
+	const MAX = 999
+
+	const (
+		MAX2 = 999
+		MAX3 = 9999
+		MIN2 = 99
+	)
+
+	var a = (100 * 2) / 2
+
+	//const A = a // cannot assign normal variable to the const
+
+	fmt.Println("Constant value and normal value", MAX, a)
+
+	const MAX1 = (100 * 9) / MIN
+
+	fmt.Println("Constant value", MAX1)
+
 }
