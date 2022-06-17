@@ -3,6 +3,8 @@ package main
 import (
 	"fmt" // this is part of Go's standard pacakge
 	_ "time"
+
+	_ "github.com/spf13/cobra"
 )
 
 func main() {
@@ -25,6 +27,11 @@ func main() {
 // android/arm64 --> GOOS is android. GOARCH is arm64
 // darwin/amd64  --> GOOS is darwin.  GOARCH is amd64
 // windows/amd64
+
+// go mod
+// in the root directory of your project run the following command
+// go mod init demo
+// go mod tidy // This pulls all dependencies and maintain the list in go.sum file
 
 // there three types of packages in go
 // 1- Go standard packages (std library)
