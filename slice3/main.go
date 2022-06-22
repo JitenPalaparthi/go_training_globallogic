@@ -75,11 +75,11 @@ func main() {
 	fmt.Println("Slice10", slice10)
 
 	// remove an element from a slice
-	slice1 = remove(slice1, 0)
+	slice9 = remove(slice9, 0)
 	// [1 2 3 4 5 6 7 8 9 10]
 	// slice[:i] =  0 [ 2 3 4 5 6 7 8 9 10]
 	// slice[i+1:] =[2 3 4 5 6 7 8 9 10]
-	fmt.Println(slice1)
+	fmt.Println(slice9)
 
 }
 
