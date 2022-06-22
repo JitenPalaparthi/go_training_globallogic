@@ -31,10 +31,10 @@ func main() {
 		a = t*/
 		// simple swapping in go
 
-		fmt.Println("Before swap a,b,c", a, b, c)
+		console.log("Before swap a,b,c", a, b, c)
 		a, b, c = c, a, b
 
-		fmt.Println("After swap a,b,c", a, b, c)
+		console.log("After swap a,b,c", a, b, c)
 	}
 
 	// Type Casting

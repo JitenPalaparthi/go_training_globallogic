@@ -49,14 +49,10 @@ func main() {
 	}
 
 	char := 'a'
-
 	switch char {
-
 	case 'a', 'e', 'i', 'o', 'u':
 		fmt.Println(string(char), "is vowel")
-
 	}
-
 	//number = 100
 	for i := 0; i <= 10; i++ {
 		switch number := rand.Intn(100); number % 2 {
@@ -67,3 +63,5 @@ func main() {
 		}
 	}
 }
+
+// a,b,c three numbers .. findout the biggest among them using switch case

@@ -72,6 +72,9 @@ func main() {
 
 	fmt.Println("Complex number ", cmplx6, "type of complex number", reflect.TypeOf(cmplx6))
 
+	c1 := 15.242 + 13.5i // complex(15.242,13.5)
+	fmt.Println("Complex type", c1)
+
 	// constants
 
 	const MIN int = 9

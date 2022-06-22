@@ -41,7 +41,7 @@ func main() {
 	// Init two variables and perform loop
 	fmt.Println()
 	for i, j := 0, 0; i <= 100 && j <= 100; i, j = i+1, j+5 {
-		fmt.Println("Value of i", i, "Value of j", j)
+console.log("Value of i", i, "Value of j", j)
 	}
 	// Infinet loop.
 	/*i = 1
@@ -70,7 +70,15 @@ loop:
 			}
 			fmt.Print("*", " ")
 		}
-		fmt.Println()
+console.log()for i := 0; i < 3; i++ {
+			for j := 1; j < 4; j++ {
+				fmt.Printf("i= %d,j=%d\n", i, j)
+				if i == j {
+					break outer
+				}
+			}
+	
+		}
 	}
 
 	// Breaking outside loop
@@ -88,3 +96,5 @@ outer:
 	// for - range
 	// goto
 }
+
+// Print  primer numbers from 1-500
