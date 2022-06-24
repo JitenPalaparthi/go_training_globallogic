@@ -26,7 +26,7 @@ func main() {
 	// 2- map
 	// 3- channel
 
-	// pointers , slices, maps, channels you can check them whethere they are nil or not
+	// pointers , slices, maps, channels you can check them whether they are nil or not
 	var slice []int // declaring the slice
 
 	// Employee emp = new Employee();

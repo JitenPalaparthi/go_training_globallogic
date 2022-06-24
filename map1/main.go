@@ -5,8 +5,9 @@ import "fmt"
 func main() {
 
 	var myMap map[string]string
-	myMap = make(map[string]string, 1) // length is 1 it doesnot mean that you can give only 1 element
-
+	if myMap == nil {
+		myMap = make(map[string]string, 1) // length is 1 it doesnot mean that you can give only 1 element
+	}
 	myMap["522316"] = "Guntur"
 	myMap["560086"] = "yeshvantpur Bangalore"
 	myMap["560096"] = "Mahalakshmi Layout, Bangalore"
@@ -26,12 +27,12 @@ func main() {
 		fmt.Println("Key", key, "Value", val)
 	}
 
-	val, ok := myMap["111111"] // it returns two things the value of the map , whether the value for the key ther or not
+	_, ok := myMap["111111"] // it returns two things the value of the map , whether the value for the key ther or not
 	// if key is not present ok is false; if key is not there that means there is no value as well
 	if ok {
 		fmt.Println("Can update an element to the map, becasue there is a key ")
 	} else {
 		fmt.Println("Cannot update an element but can insert an element to the map, becase ther is not key")
 	}
-	fmt.Println(ok, val)
+	//fmt.Println(ok, val)
 }
