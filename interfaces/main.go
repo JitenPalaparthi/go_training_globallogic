@@ -1,9 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"demo/convert"
+	"fmt"
+)
 
 func main() {
-	var IConvert Converter
+	var IConvert convert.Converter
 	emp1 := &Employee{Number: 12345, Name: "Jiten", Email: "JitenP@Outlook.Com"}
 	var num CInt = 1000
 	IConvert = emp1
@@ -21,19 +24,6 @@ func main() {
 }
 
 // nil check can be done on slice, maps , chan , pointers and also interface
-
-type Stringer interface {
-	ToString() string
-}
-
-type Byter interface {
-	ToByte() []byte
-}
-
-type Converter interface {
-	Stringer
-	Byter
-}
 
 type Employee struct {
 	Number int
