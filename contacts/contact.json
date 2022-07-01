@@ -1,0 +1,9 @@
+{
+    "id": 101,
+    "name": "Jiten",
+    "address": "Bangalore",
+    "email": "JitenP@Outlook.Com",
+    "contactNo": "9618558500",
+    "status": "active",
+    "lastModifed": "time.Date(2022, time.July, 1, 12, 53, 40, 654260631, time.Local)"
+}
