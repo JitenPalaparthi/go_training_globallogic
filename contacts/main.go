@@ -2,20 +2,18 @@ package main
 
 import (
 	"contacts/database"
-	"contacts/models"
+	h "contacts/handlers"
 	"flag"
 	"net/http"
 	"os"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang/glog"
 )
 
 var (
-	contact      *models.Contact = &models.Contact{ID: 101, Name: "Jiten", Address: "Bangalore", Email: "JitenP@Outlook.Com", ContactNo: "9618558500", Status: "active", LastModified: time.Now().GoString()}
-	DBCONNECTION string          = "host=localhost user=jiten password=admin dbname=sample port=5432 sslmode=disable TimeZone=Asia/Shanghai"
-	PORT         string          = ":50080"
+	DBCONNECTION string = "host=localhost user=jiten password=admin dbname=sample port=5432 sslmode=disable TimeZone=Asia/Shanghai"
+	PORT         string = ":50080"
 )
 
 func usage() {
@@ -40,13 +38,14 @@ func main() {
 		DBCONNECTION = os.Getenv("DBCONNECTION")
 	}
 
-	_, err := database.GetConnection(DBCONNECTION)
+	db, err := database.GetConnection(DBCONNECTION)
 
 	if err != nil {
-		//	panic(err)
 		glog.Fatal("Database Error:", err)
 	}
-	//fmt.Println(db)
+
+	cdb := &database.ContactDB{Client: db}
+	contactHandler := &h.ContactHandler{IContact: cdb}
 
 	r := gin.Default()
 
@@ -56,19 +55,7 @@ func main() {
 		})
 	})
 
-	r.GET("/contact", GetContact(contact))
+	r.POST("/contact", contactHandler.CreateContact())
 
 	r.Run(PORT)
-}
-
-// func GetContactfunc(c *gin.Context) {
-// 	c.JSON(http.StatusOK, gin.H{
-// 		"message": "pong",
-// 	})
-// }
-
-func GetContact(contact *models.Contact) func(*gin.Context) {
-	return func(c *gin.Context) {
-		c.JSON(http.StatusOK, contact)
-	}
 }

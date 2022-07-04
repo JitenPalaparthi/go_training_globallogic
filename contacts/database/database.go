@@ -1,9 +1,7 @@
 package database
 
 import (
-	"flag"
 	"fmt"
-	"os"
 	"time"
 
 	"gorm.io/driver/postgres"
@@ -15,18 +13,18 @@ const (
 	MAXWAIT    = time.Second * 2
 )
 
-func usage() {
-	//fmt.Fprintf(os.Stderr, "usage: -stderrthreshold=[WARNING|FATAL] -log_dir=[string]\n")
-	flag.PrintDefaults()
-	os.Exit(2)
-}
+// func usage() {
+// 	//fmt.Fprintf(os.Stderr, "usage: -stderrthreshold=[WARNING|FATAL] -log_dir=[string]\n")
+// 	flag.PrintDefaults()
+// 	os.Exit(2)
+// }
 
-func init() {
-	flag.Usage = usage
-	// NOTE: This next line is key you have to call flag.Parse() for the command line
-	// options or "flags" that are defined in the glog module to be picked up.
-	flag.Parse()
-}
+// func init() {
+// 	flag.Usage = usage
+// 	// NOTE: This next line is key you have to call flag.Parse() for the command line
+// 	// options or "flags" that are defined in the glog module to be picked up.
+// 	flag.Parse()
+// }
 
 //dsn := "host=localhost user=gorm password=gorm dbname=gorm port=9920 sslmode=disable TimeZone=Asia/Shanghai"
 func GetConnection(url string) (interface{}, error) {
