@@ -45,6 +45,7 @@ func main() {
 	}
 
 	cdb := &database.ContactDB{Client: db}
+	//cdb := &filedb.FileDB{}
 	contactHandler := &h.ContactHandler{IContact: cdb}
 
 	r := gin.Default()
@@ -55,7 +56,9 @@ func main() {
 		})
 	})
 
+	r.GET("/contact/:id", contactHandler.GetContactByID())
 	r.POST("/contact", contactHandler.CreateContact())
+	r.DELETE("/contact/:id", contactHandler.DeleteContact())
 
 	r.Run(PORT)
 }
