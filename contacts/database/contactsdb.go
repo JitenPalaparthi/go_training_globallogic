@@ -3,6 +3,7 @@ package database
 import (
 	"contacts/models"
 	"errors"
+	"fmt"
 
 	"gorm.io/gorm"
 )
@@ -41,11 +42,9 @@ func (c *ContactDB) Get(id string) (*models.Contact, error) {
 
 func (c *ContactDB) Create(contact *models.Contact) (interface{}, error) {
 	c.Client.(*gorm.DB).AutoMigrate(&models.Contact{})
-	if err := c.IfExists(contact.Email); err != nil {
-		return nil, err
-	}
 	result := c.Client.(*gorm.DB).Create(contact)
 	if result.Error != nil {
+		fmt.Println("------------->", result.Error)
 		return nil, result.Error
 	}
 	return contact.ID, nil

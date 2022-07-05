@@ -1,6 +1,9 @@
 package models
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 type Contact struct {
 	ID           uint   `json:"id" gorm:"primaryKey"`
@@ -23,4 +26,8 @@ func (c *Contact) Validate() error {
 		return fmt.Errorf("invalid data for the filed:ContactNo")
 	}
 	return nil
+}
+
+func (c *Contact) ToJsonByte() ([]byte, error) {
+	return json.Marshal(c)
 }

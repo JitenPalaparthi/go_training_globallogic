@@ -2,7 +2,9 @@ package handlers
 
 import (
 	"contacts/interfaces"
+	"contacts/messaging"
 	"contacts/models"
+	"context"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -15,6 +17,8 @@ import (
 
 type ContactHandler struct {
 	IContact interfaces.IContact
+	m        *messaging.ProduceMessage
+	//IMessage messaging.IMessage
 }
 
 func (ch *ContactHandler) GetContactByID() func(*gin.Context) {
@@ -121,7 +125,7 @@ func (ch *ContactHandler) CreateContact() func(*gin.Context) {
 			return
 		}
 		if err := ch.IContact.IfExists(contact.Email); err != nil {
-
+			err = nil
 			if err != nil {
 				c.JSON(http.StatusBadRequest, models.Response{Status: "fail", Message: err.Error()})
 				glog.Errorln(err)
@@ -141,6 +145,10 @@ func (ch *ContactHandler) CreateContact() func(*gin.Context) {
 			c.Abort()
 			return
 		}
+		// produce
+		ch.m = &messaging.ProduceMessage{Brokers: "localhost:29092", Topic: "CONTACT_CREATION", Key: []byte(string(contact.ID)), Data: buf}
+		err = ch.m.Produce(context.Background())
+		glog.Errorln(err)
 		c.JSON(http.StatusCreated, gin.H{
 			"status":  "success",
 			"message": id,

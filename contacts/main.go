@@ -3,6 +3,8 @@ package main
 import (
 	"contacts/database"
 	h "contacts/handlers"
+	"contacts/messaging"
+	"context"
 	"flag"
 	"net/http"
 	"os"
@@ -47,6 +49,10 @@ func main() {
 	cdb := &database.ContactDB{Client: db}
 	//cdb := &filedb.FileDB{}
 	contactHandler := &h.ContactHandler{IContact: cdb}
+
+	// subscriber
+	subscriber := &messaging.SubscribeMessage{Brokers: "localhost:29092", Topic: "CONTACT_CREATION"}
+	go subscriber.Subscribe(context.Background())
 
 	r := gin.Default()
 
